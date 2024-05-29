@@ -1,0 +1,42 @@
+h1 {
+  text-align: center;
+}
+
+form {
+  margin-block: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  outline: none;
+  margin-left: 16px;
+  margin-right: 1px;
+  height: 36px;
+  padding-inline: 12px;
+  border-radius: 50px 0 0 50px;
+  border: 1px solid darkblue;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+button {
+  height: 40px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 0 50px 50px 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+button:hover {
+  background-color: lightgreen;
+  transition: 0.3s;
+}

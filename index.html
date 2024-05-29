@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/Quick-WhatsApp-Chat-favicon.webp" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <title>Quick WhatsApp Chat</title>
+</head>
+<body>
+  <h1>Quick WhatsApp Chat</h1>
+  <form>
+    <input 
+      type="tel" 
+      id="phoneNumber" 
+      name="phoneNumber" 
+      placeholder="Enter phone number"
+      pattern="(0\d{9}|\+213\d{9})" 
+      required>
+    <button type="submit">
+      Go to <img src="./assets/whatsapp-icon.svg" width="24" alt="Whatsapp icon">
+    </button>
+  </form>
+  <div style="text-align: center;">
+    <a href="/">Refresh</a>
+  </div>
+  
+  <script>
+    const form = document.querySelector('form');
+    const phoneNumber = document.getElementById('phoneNumber');
+
+    form.onsubmit = (evt) => {
+      evt.preventDefault();
+      if (form.checkValidity()) {
+        const phone = phoneNumber.value.startsWith('0') 
+          ? '+213' + phoneNumber.value.slice(1)
+          : phoneNumber.value;
+        const url = `https://web.whatsapp.com/send?phone=${phone}`;
+        window.open(url, '_blank');
+      }
+    }
+  </script>
+</body>
+</html>

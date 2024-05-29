@@ -27,8 +27,17 @@
     </div>
   </form>
 
+  <footer>
+    <b><a href="https://red1code.github.io/red1dev/" target="_blank">Redouane</a></b> 
+    © <span id="currentYear"></span> | Check on 
+    <b><a href="https://github.com/red1code/Quick-WhatsApp-Chat" target="_blank">Github</a></b>
+  </footer>
+
   
   <script>
+    const currentYear = document.getElementById('currentYear')
+      .textContent = new Date().getFullYear();
+
     const form = document.querySelector('form');
     const webBtn = document.getElementById('webBtn');
     const appBtn = document.getElementById('appBtn');

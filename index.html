@@ -17,26 +17,44 @@
       placeholder="Enter phone number"
       pattern="(0\d{9}|\+213\d{9})" 
       required>
-    <button type="submit">
-      Go to <img src="./assets/whatsapp-icon.svg" width="24" alt="Whatsapp icon">
-    </button>
+    <div class="btns-container">
+      <button type="button" id="webBtn">
+        Open<img src="./assets/whatsapp-icon.svg" width="24" alt="Whatsapp icon">on the web
+      </button>
+      <button type="button" id="appBtn">
+        Open<img src="./assets/whatsapp-icon.svg" width="24" alt="Whatsapp icon">app
+      </button>
+    </div>
   </form>
-  <div style="text-align: center;">
-    <a href="/">Refresh</a>
-  </div>
+
   
   <script>
     const form = document.querySelector('form');
+    const webBtn = document.getElementById('webBtn');
+    const appBtn = document.getElementById('appBtn');
     const phoneNumber = document.getElementById('phoneNumber');
 
-    form.onsubmit = (evt) => {
-      evt.preventDefault();
-      if (form.checkValidity()) {
-        const phone = phoneNumber.value.startsWith('0') 
+    const getPhone = () => phoneNumber.value.startsWith('0') 
           ? '+213' + phoneNumber.value.slice(1)
           : phoneNumber.value;
-        const url = `https://web.whatsapp.com/send?phone=${phone}`;
+
+    webBtn.onclick = (evt) => {
+      evt.preventDefault();
+      if (form.checkValidity()) {
+        const url = `https://web.whatsapp.com/send?phone=${getPhone()}`;
         window.open(url, '_blank');
+      } else {
+        window.alert('Phone number invalid!')
+      }
+    }
+
+    appBtn.onclick = (evt) => {
+      evt.preventDefault();
+      if (form.checkValidity()) {
+        const url = `https://wa.me/${getPhone()}`;
+        window.open(url, '_blank');
+      } else {
+        window.alert('Phone number invalid!')
       }
     }
   </script>
